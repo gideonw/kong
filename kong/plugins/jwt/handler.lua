@@ -175,14 +175,9 @@ end
 function JwtHandler:access(conf)
   JwtHandler.super.access(self)
 
-  -- check if preflight request and whether it should be authenticated
-  if conf.run_on_preflight == false and get_method() == "OPTIONS" then
-    -- FIXME: the above `== false` test is because existing entries in the db will
-    -- have `nil` and hence will by default start passing the preflight request
-    -- This should be fixed by a migration to update the actual entries
-    -- in the datastore
-    return
-  end
+--  if get_method() == "OPTIONS" then
+--	return
+--  end
 
   if ngx.ctx.authenticated_credential and conf.anonymous ~= "" then
     -- we're already authenticated, and we're configured for using anonymous,
