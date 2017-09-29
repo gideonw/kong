@@ -175,9 +175,9 @@ end
 function JwtHandler:access(conf)
   JwtHandler.super.access(self)
 
---  if get_method() == "OPTIONS" then
---	return
---  end
+  if get_method() == "OPTIONS" then
+	return
+  end
 
   if ngx.ctx.authenticated_credential and conf.anonymous ~= "" then
     -- we're already authenticated, and we're configured for using anonymous,
