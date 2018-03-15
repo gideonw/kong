@@ -79,6 +79,10 @@ local function get_upstream(upstream_name)
     return nil, err
   end
 
+  if not upstreams_dict then
+    return false
+  end
+
   local upstream_id = upstreams_dict[upstream_name]
   if not upstream_id then
     return false -- no upstream by this name
